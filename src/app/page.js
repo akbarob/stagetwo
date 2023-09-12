@@ -5,7 +5,7 @@ import Loading from "@/components/Loading";
 import MainContent from "@/components/MainContent";
 import SearchMain from "@/components/SearchMain";
 import Sidebar from "@/components/Sidebar";
-import { getMovies, getMoviesBySearch } from "@/utils/Fetcher";
+import { GetMovies, GetMoviesBySearch } from "@/utils/Fetcher";
 import React, { useEffect, useState } from "react";
 
 export default function Stagetwo() {
@@ -15,13 +15,13 @@ export default function Stagetwo() {
     data: searchedmovie,
     error,
     isLoading,
-  } = getMoviesBySearch(searchText);
+  } = GetMoviesBySearch(searchText);
 
   const {
     data: movies,
     error: moviesError,
     isLoading: moviesLoading,
-  } = getMovies();
+  } = GetMovies();
   console.log(
     "swr:",
     movies?.results,

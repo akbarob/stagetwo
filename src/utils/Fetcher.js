@@ -1,5 +1,5 @@
 import useSWR from "swr";
-
+import React from "react";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const options = {
   method: "GET",
@@ -10,7 +10,7 @@ const options = {
   },
 };
 
-export function getMoviesBySearch(searchText) {
+export function GetMoviesBySearch(searchText) {
   const { data, error, isLoading } = useSWR(
     `https://api.themoviedb.org/3/search/movie?query=${searchText}&api_key=7f06b4b1822e80a13457068102009aa3`,
     fetcher
@@ -23,7 +23,7 @@ export function getMoviesBySearch(searchText) {
   };
 }
 
-export function getMovies() {
+export function GetMovies() {
   const { data, error, isLoading } = useSWR(
     `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=7f06b4b1822e80a13457068102009aa3`,
     fetcher
