@@ -1,6 +1,5 @@
 import React from "react";
 import { Vortex } from "react-loader-spinner";
-
 export default function Loading() {
   return (
     <div className="flex flex-col justify-center items-center w-full h-screen">
