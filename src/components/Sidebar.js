@@ -3,14 +3,14 @@ import Link from "next/link";
 import React from "react";
 
 const navs = [
-  { icon: "/images/Home.svg", link: "Home" },
-  { icon: "/images/Movie Projector.svg", link: "Movies" },
-  { icon: "/images/TV Show.svg", link: "Tv Series" },
-  { icon: "/images/Calendar.svg", link: "Upcoming" },
+  { icon: "/images/Home.svg", link: "/", name: "Home" },
+  { icon: "/images/Movie Projector.svg", link: "#", name: "Movies" },
+  { icon: "/images/TV Show.svg", link: "#", name: "Tv Series" },
+  { icon: "/images/Calendar.svg", link: "#", name: "Upcoming" },
 ];
 export default function Sidebar() {
   return (
-    <div className=" w-[226px] bg-white h-screen border-[1px] rounded-tr-[45px] rounded-br-[45px] border-[#000000]/30  border-tr-[45px]  flex flex-col gap-4 ">
+    <div className="hidden md:flex w-[226px] bg-white h-screen border-[1px] rounded-tr-[45px] rounded-br-[45px] border-[#000000]/30  border-tr-[45px]  flex-col gap-4 ">
       <Link href="/" className="flex gap-4 items-center p-8 cursor-pointer">
         <Image
           className="h-[50px] w-[50px]"
@@ -25,10 +25,11 @@ export default function Sidebar() {
 
       <ul className="">
         {navs.map((item) => (
-          <li
-            key={item.link}
+          <Link
+            href={item.link}
+            key={item.name}
             className={` flex gap-4 w-full h-[66px] items-center justify-start pl-6 ${
-              item.link === "Movies" &&
+              item.name === "Movies" &&
               "bg-[#BE123C]/10 border-r-[#BE123C] border-r-[5px] "
             }`}
           >
@@ -39,8 +40,8 @@ export default function Sidebar() {
               height={100}
               alt="logo"
             />
-            <p className="font-semibold text-[20px]">{item.link}</p>
-          </li>
+            <p className="font-semibold text-[20px]">{item.name}</p>
+          </Link>
         ))}
       </ul>
 

@@ -6,6 +6,13 @@ import React, { useEffect, useState } from "react";
 export default function Moviepage({ params }) {
   const [movie, setMovie] = useState({});
   const movie_id = params.id;
+
+  const avatar = [
+    "/images/avatar1.png",
+    "/images/avatar2.png",
+    "/images/avatar3.png",
+    "/images/avatar4.png",
+  ];
   async function getMovieDetails() {
     const options = {
       method: "GET",
@@ -20,9 +27,6 @@ export default function Moviepage({ params }) {
       .then((response) => response.json())
       .then((response) => setMovie(response))
       .catch((err) => console.error(err));
-    console.log("details ran");
-    console.log(movie_id);
-    console.log(movie);
   }
 
   useEffect(() => {
@@ -31,36 +35,36 @@ export default function Moviepage({ params }) {
   }, []);
   return (
     <div className="flex gap-4 overflow-y-auto relative">
-      <Sidebar className="fixed" />
-      <section className="h-screen overflow-y-auto flex-1 flex flex-col p-4 gap-10">
+      <Sidebar className="hidden lg:fixed" />
+      <section className="h-screen overflow-y-auto lg:flex-1 flex flex-col p-4 gap-10">
         <div className="relative">
-          <div className="absolute  inset-x-0 inset-y-0 flex justify-center items-center ">
+          <div className="relative  w-[1198px] h-[449px] rounded-3xl">
             <Image
-              className="w-[168px] h-[157px] cursor-pointer"
-              src={`/images/playTrailer.svg`}
-              width={100}
-              height={100}
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              fill
+              className="rounded-3xl object-cover"
               alt={`poster image of ${movie.title}`}
               data-testid="movie-poster"
             />
+            <div className="absolute  inset-x-0 inset-y-0 flex justify-center items-center ">
+              <Image
+                className="w-[168px] h-[157px] cursor-pointer"
+                src={`/images/playTrailer.svg`}
+                width={100}
+                height={100}
+                alt={`poster image of ${movie.title}`}
+                data-testid="movie-poster"
+              />
+            </div>
           </div>
-
-          <Image
-            className="w-[1198px] h-[449px] rounded-3xl"
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            width={100}
-            height={100}
-            alt={`poster image of ${movie.title}`}
-            data-testid="movie-poster"
-          />
         </div>
         <div>
-          <div className="flex justify-between mb-10 w-full">
+          <div className="flex justify-between mb-10 w-full font-semibold">
             <div className="flex gap-3 justify-between items-center">
               <h1 data-testid="movie-title">{movie.title}</h1>
-              <span>•</span>{" "}
+              <span className="hidden lg:visible">•</span>{" "}
               <h1 data-testid="movie-release-date">{movie.release_date}</h1>{" "}
-              <span>•</span>
+              <span className="hidden lg:visible">•</span>
               <h1>{movie.adult ? "PG - 13" : "PG - 6"}</h1>
               <h1 data-testid="movie-runtime">{movie.runtime} mins</h1>
               {movie?.genres?.map((item) => (
@@ -88,30 +92,80 @@ export default function Moviepage({ params }) {
           </div>
           <div className="flex gap-4">
             <div className="gap-10 flex flex-col">
-              <p data-testid="movie-overview">{movie.overview}</p>
-              <h1>Director: </h1>
-              <h1>Writers:</h1>
-              <h1>Stars:</h1>
-            </div>
-            <div className="flex flex-col gap-8">
-              <button className="rounded-[10px] w-[360px] h-[55px] bg-[#BE123C]">
-                See Sowtimes
-              </button>
-              <button className="rounded-[10px] w-[360px] h-[55px] bg-[#BE123C]/10 border-[#BE123C] text-[#333333]">
-                More watch options
-              </button>
-              <div className="w-[350px] h-[299px]">
-                <Image
-                  className="w-full"
-                  src="/images/Group 52.jpg"
-                  alt="poster"
-                  width={100}
-                  height={100}
-                />
+              <div className="flex justify-between">
+                <p data-testid="movie-overview" className="">
+                  {movie.overview}
+                </p>
+                <div className="flex flex-col gap-3">
+                  <button className="rounded-[10px] w-[360px] h-[55px] bg-[#BE123C]">
+                    See Showtimes
+                  </button>
+                  <button className="rounded-[10px] w-[360px] h-[55px] bg-[#BE123C]/10 border-[#BE123C] text-[#333333]">
+                    More watch options
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center w-full">
+                <div className="flex flex-col gap-6 w-[785px]">
+                  <h1>
+                    Director:
+                    <span className="pl-2 text-[20px] text-[#BE123C]">
+                      Joseph Kosinski
+                    </span>
+                  </h1>
+                  <h1>
+                    Writers:
+                    <span className="pl-2 text-[20px] text-[#BE123C]">
+                      Jim Cash, Jack Epps Jr, Peter Craig
+                    </span>
+                  </h1>
+                  <h1>
+                    Stars:
+                    <span className="pl-2 text-[20px] text-[#BE123C]">
+                      Tom Cruise, Jennifer Connelly, Miles Teller
+                    </span>
+                  </h1>
+                  <div className="mr-4 h-[55px] rounded-[10px] border flex ">
+                    <button className="bg-[#BE123C] w-[253px] rounded-[10px] py-2 px-3 ">
+                      Top rated movie #65
+                    </button>
+                    <div className="flex flex-1 px-6 justify-between items-center">
+                      <p>Award 9 niminations</p>
+                      <Image
+                        src="/images/Expand Arrow.svg"
+                        className="w-[30px] h-[30px]"
+                        width={100}
+                        height={100}
+                        alt="arrow"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative w-[350px] h-[299px]">
+                  <Image
+                    className="w-full"
+                    src="/images/Group 52.jpg"
+                    alt="poster"
+                    fill
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
+        {/* <section>
+          {" "}
+          <h1>Top Cast</h1>
+          <div className="relative w-[150px] h-[150px] rounded-full">
+            {avatar.map((item) => (
+              <div>
+                <Image fill src={item} alt={item} className="" />
+              </div>
+            ))}
+          </div>
+        </section> */}
       </section>
     </div>
   );

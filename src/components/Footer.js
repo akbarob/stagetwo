@@ -31,7 +31,7 @@ export default function Footer() {
           <p>Condition of Use</p>
         </div>
         <div>
-          <p>© 2021 MovieBox by Adriana Eka Prayudha </p>
+          <p className="text-center">© 2021 MovieBox by Adriana Eka Prayudha</p>
         </div>
       </footer>
     </div>

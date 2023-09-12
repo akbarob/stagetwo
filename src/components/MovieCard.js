@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function MovieCard({ item }) {
+  console.log(item);
   const router = useRouter();
   const [like, setlike] = useState("false");
 
@@ -11,8 +12,8 @@ export default function MovieCard({ item }) {
     <div
       onClick={() => router.push(`/movie/${item.id}`)}
       // href={`/movie/${item.id}`}
-      data-testid="movie-card className"
-      className="relative h-[490px] w-[250px] mb-[103px] cursor-pointer"
+      data-testid="movie-card"
+      className="relative flex flex-col gap-4 h-[490px] w-[250px] mb-[103px]/2 cursor-pointer"
     >
       <div className=" absolute z-40 top-0 w-full p-3 flex justify-between items-center">
         <span>
@@ -30,22 +31,28 @@ export default function MovieCard({ item }) {
             src={`/images/${like ? "like" : "unlike"}.svg`}
             width={100}
             height={100}
-            alt={`poster image of ${item.title}`}
+            alt={`fav icon`}
           />
         </span>
       </div>
-      <Image
-        className="w-full h-[370px]"
-        src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-        width={100}
-        height={100}
-        alt={`poster image of ${item.title}`}
-        data-testid="movie-poster"
-      />
+
+      <div className="relative w-[250px] h-[370px] object-contain">
+        <Image
+          src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+          fill
+          alt={`poster image of ${item.title}`}
+          data-testid="movie-poster"
+        />
+      </div>
+
       <section>
-        <p data-testid="movie-release-date">{item.release_date}</p>
-        <p data-testid="movie-title">{item.title}</p>
-        <div>
+        <p data-testid="movie-release-date" className="text-[12px] font-bold">
+          {item.release_date}
+        </p>
+        <p data-testid="movie-title" className="text-[18px] font-bold">
+          {item.title}
+        </p>
+        <div className="flex gap-3 items-center">
           <Image
             className="w-[35px] h-[17px]"
             src="/images/imdg.png"
@@ -53,9 +60,8 @@ export default function MovieCard({ item }) {
             height={100}
             alt=""
           />
-          <p>rating</p>
+          <p>{item.vote_average}</p>
         </div>
-        <p>action,adventure</p>
       </section>
     </div>
   );

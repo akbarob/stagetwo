@@ -7,8 +7,7 @@ export default function Hero({ setSearchText }) {
       <Image
         className="absolute inset-x-0 inset-y-0 w-full z-0 object-fill"
         src="/images/Poster.png"
-        width={100}
-        height={100}
+        fill
         alt="poster"
         priority
       />
@@ -80,7 +79,7 @@ export default function Hero({ setSearchText }) {
           </div>
           <p className="text-[14px]">
             John Wick is on the run after killing a member of the international
-            assassins`&apos;` guild, and with a $14 million price tag on his
+            assassins &apos; guild, and with a $14 million price tag on his
             head, he is the target of hit men and women everywhere.
           </p>
           <button className="px-2 py-2 flex gap-2 bg-rose-700 rounded-md justify-evenly  items-center w-[169px] h-[36]">
