@@ -9,31 +9,31 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZjA2YjRiMTgyMmU4MGExMzQ1NzA2ODEwMjAwOWFhMyIsInN1YiI6IjY0ZmVmM2ExZGI0ZWQ2MTAzM2ExNmY3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xTgPSf5G-gURhmjZ6uFQw4XkDGo3z1Jbot_DffMhAgc",
   },
 };
-export const getMoviesBySearch = (searchText) => {
+
+export function getMoviesBySearch(searchText) {
   const { data, error, isLoading } = useSWR(
     `https://api.themoviedb.org/3/search/movie?query=${searchText}&api_key=7f06b4b1822e80a13457068102009aa3`,
     fetcher
     // options
   );
-
   return {
     data,
     isLoading,
     error,
   };
-};
-export const getMovies = () => {
+}
+
+export function getMovies() {
   const { data, error, isLoading } = useSWR(
     `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=7f06b4b1822e80a13457068102009aa3`,
     fetcher
   );
-
   return {
     data,
     isLoading,
     error,
   };
-};
+}
 
 // async function getMovies() {
 //   const options = {
