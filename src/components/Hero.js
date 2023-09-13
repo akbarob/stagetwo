@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 export default function Hero({ setSearchText }) {
   return (
     <header
-      className={`relative w-full h-[400px] lg:h-[600px] bg-amber-400 text-white`}
+      className={`relative w-full h-[400px] lg:h-[600px] bg-white/80 text-white`}
     >
       <Image
         className="absolute inset-x-0 inset-y-0 w-full z-0 object-fill"
