@@ -20,7 +20,7 @@ export default function MainContent({ movies }) {
         </Link>
       </div>
       <div className="flex justify-center items-center mx-auto">
-        <div className=" grid grid-cols-4 gap-20 place-content-center">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 place-content-center">
           {movies?.slice(0, 10).map((item) => (
             <MovieCard key={item?.id} item={item} />
           ))}

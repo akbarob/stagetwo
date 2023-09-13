@@ -10,7 +10,7 @@ const navs = [
 ];
 export default function Sidebar() {
   return (
-    <div className="hidden md:flex w-[226px] bg-white h-screen border-[1px] rounded-tr-[45px] rounded-br-[45px] border-[#000000]/30  border-tr-[45px]  flex-col gap-4 ">
+    <div className="hidden lg:flex w-[226px] bg-white h-screen border-[1px] rounded-tr-[45px] rounded-br-[45px] border-[#000000]/30  border-tr-[45px]  flex-col gap-4 ">
       <Link href="/" className="flex gap-4 items-center p-8 cursor-pointer">
         <Image
           className="h-[50px] w-[50px]"

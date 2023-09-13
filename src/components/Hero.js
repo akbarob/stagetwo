@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 
 export default function Hero({ setSearchText }) {
   return (
-    <header className={`relative w-full  h-[600px] bg-amber-400 text-white`}>
+    <header
+      className={`relative w-full h-[400px] lg:h-[600px] bg-amber-400 text-white`}
+    >
       <Image
         className="absolute inset-x-0 inset-y-0 w-full z-0 object-fill"
         src="/images/Poster.png"
@@ -11,7 +13,7 @@ export default function Hero({ setSearchText }) {
         alt="poster"
         priority
       />
-      <div className="absolute justify-between z-50 w-full h-full px-16 py-2">
+      <div className="absolute justify-between z-50 w-full h-full px-10 lg:px-16 py-2">
         <div className="flex justify-between items-center w-full">
           <div className="flex gap-4 items-center ">
             <Image
@@ -24,7 +26,7 @@ export default function Hero({ setSearchText }) {
             <h1 className="text-white font-semibold text-[24px]">MovieBox</h1>
           </div>
 
-          <div className="px-4 flex justify-center items-center gap-5 w-[525px] h-[36px] rounded-[6px] border-2 border-white">
+          <div className="hidden lg:flex px-4 justify-center items-center gap-5 w-[525px] h-[36px] rounded-[6px] border-2 border-white">
             <input
               onChange={(e) => setSearchText(e.target.value)}
               type="search"
@@ -50,7 +52,7 @@ export default function Hero({ setSearchText }) {
             />
           </div>
         </div>
-        <div className="h-[404px] w-[285px] my-[76px] flex flex-col gap-[16px]">
+        <div className="h-[404px] w-[285px] my-[26px] lg:my-[76px] flex flex-col md:gap-[8px] lg:gap-[16px]">
           <h1 className="font-bold  text-[42px]">
             John Wick 3 : <br /> Parabellum
           </h1>
